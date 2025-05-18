@@ -1,8 +1,24 @@
 {
 	"folders": [
-		{
-			"path": "."
-		}
+	  {
+		"path": "."
+	  }
 	],
-	"settings": {}
-}
+	"settings": {
+	  "terminal.integrated.defaultProfile.windows": "PowerShell",
+	  "terminal.integrated.profiles.windows": {
+		"PowerShell": {
+		  "source": "PowerShell",
+		  "icon": "terminal-powershell"
+		}
+	}
+	},
+	"extensions": {
+	  "recommendations": [
+		"esbenp.prettier-vscode",
+		"dbaeumer.vscode-eslint",
+		"ms-python.python"
+	  ]
+	}
+  }
+  
