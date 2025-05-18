@@ -1,0 +1,46 @@
+{
+    "app": {
+      "name": "InnSight"
+    },
+    "welcome": {
+      "title": "Bem-vindo ao InnSight",
+      "subtitle": "Seu companheiro pessoal de bem-estar mental.",
+      "login_with": "Entrar com",
+      "language": "Idioma",
+      "theme": "Tema"
+    },
+    "dashboard": {
+      "today": "Hoje é {{date}}",
+      "daily_intention": "Intenção Diária",
+      "edit_intention": "Editar Intenção",
+      "set_intention": "Defina sua intenção para hoje...",
+      "log_mood": "Registrar Humor",
+      "breathing_exercise": "Exercício de Respiração",
+      "previous_entries": "Entradas Anteriores"
+    },
+    "mood": {
+      "how_feeling": "Como você está se sentindo?",
+      "select_emotions": "Selecione até 3 emoções",
+      "why_feeling": "Por que você se sente assim?",
+      "save": "Salvar",
+      "snooze": "Adiar",
+      "emoji_positive": "Positivas",
+      "emoji_neutral": "Neutras",
+      "emoji_negative": "Negativas"
+    },
+    "breathe": {
+      "start": "Iniciar Exercício de Respiração",
+      "inhale": "Inspire",
+      "hold": "Segure",
+      "exhale": "Expire",
+      "done": "Concluído",
+      "relax_message": "Relaxe e siga o ritmo."
+    },
+    "common": {
+      "loading": "Carregando...",
+      "logout": "Sair",
+      "dark_mode": "Modo Escuro",
+      "light_mode": "Modo Claro"
+    }
+  }
+  

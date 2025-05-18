@@ -1,0 +1,46 @@
+{
+    "app": {
+      "name": "InnSight"
+    },
+    "welcome": {
+      "title": "Welcome to InnSight",
+      "subtitle": "Your personal mental wellness companion.",
+      "login_with": "Login with",
+      "language": "Language",
+      "theme": "Theme"
+    },
+    "dashboard": {
+      "today": "Today is {{date}}",
+      "daily_intention": "Daily Intention",
+      "edit_intention": "Edit Intention",
+      "set_intention": "Set your intention for today...",
+      "log_mood": "Log Mood",
+      "breathing_exercise": "Breathing Exercise",
+      "previous_entries": "Previous Entries"
+    },
+    "mood": {
+      "how_feeling": "How are you feeling?",
+      "select_emotions": "Select up to 3 emotions",
+      "why_feeling": "Why do you feel this way?",
+      "save": "Save",
+      "snooze": "Snooze",
+      "emoji_positive": "Positive",
+      "emoji_neutral": "Neutral",
+      "emoji_negative": "Negative"
+    },
+    "breathe": {
+      "start": "Start Breathing Exercise",
+      "inhale": "Inhale",
+      "hold": "Hold",
+      "exhale": "Exhale",
+      "done": "Done",
+      "relax_message": "Relax and follow the rhythm."
+    },
+    "common": {
+      "loading": "Loading...",
+      "logout": "Logout",
+      "dark_mode": "Dark Mode",
+      "light_mode": "Light Mode"
+    }
+  }
+  

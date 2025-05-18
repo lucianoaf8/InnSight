@@ -1,0 +1,34 @@
+# 🔥 Node (React frontend)
+innsight-frontend/node_modules/
+innsight-frontend/dist/
+innsight-frontend/.DS_Store
+innsight-frontend/.env
+innsight-frontend/.env.local
+innsight-frontend/.env.*.local
+
+# ⚙️ Python backend
+innsight-backend/venv/
+innsight-backend/__pycache__/
+innsight-backend/*.pyc
+innsight-backend/instance/*.db
+innsight-backend/firebase-service-account.json
+innsight-backend/.DS_Store
+
+# 🚫 OS files
+.DS_Store
+Thumbs.db
+
+# 🧪 Testing / Debug
+*.log
+*.sqlite
+*.sqlite3
+.env
+.env.*
+*.bak
+
+# 📄 Vite cache (optional)
+innsight-frontend/.vite/
+
+# 📄 VSCode / JetBrains IDEs
+.vscode/
+.idea/
