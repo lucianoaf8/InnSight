@@ -1,9 +1,8 @@
-
 # 📘 PROJECT DOCUMENTATION — *InnSight v1*
 
 ## 🔥 Project Summary
 
-**InnSight** is a web-based personal mental health companion that helps users track their mood, log their daily intentions, perform breathing exercises, and reflect over time — all with a clean, bilingual UI and optional AI integration. It is accessible via `https://innsight.lucaverse.dev`.
+**InnSight** is a web-based personal mental health companion that helps users track their mood, log daily intentions, perform breathing exercises, and reflect over time — all with a clean, bilingual UI. It is accessible via `https://innsight.lucaverse.dev`.
 
 The application is composed of:
 
@@ -19,86 +18,83 @@ The application is composed of:
 
 ## 🌐 Stack Overview
 
-| Layer              | Tech                            | Notes                                                      |
-| ------------------ | ------------------------------- | ---------------------------------------------------------- |
-| Frontend           | React + Vite + Tailwind         | For speed, theming, and flexibility                        |
-| Routing            | React Router DOM                | For navigation between mood log, dashboard, breathing, etc |
-| Auth               | Firebase Auth (JS SDK)          | OAuth only (Google, Microsoft, Apple)                      |
-| i18n               | `react-i18next`                 | Language toggle for English and Portuguese                 |
-| State Management   | Local component state / Context | Minimal global state for auth and entries                  |
-| Backend API        | Flask                           | Hosted on PythonAnywhere                                   |
-| Database           | SQLite (v1), switchable         | Used by Flask to store entries                             |
-| Hosting (frontend) | Cloudflare Pages                | DNS + static delivery                                      |
-| Hosting (backend)  | PythonAnywhere                  | Flask server and SQLite storage                            |
-| Dev Environment    | Local dev via Windsurf          | React root at `D:\Projects\InnSight`                       |
+| Layer              | Tech                              | Notes                                                  |
+| ------------------ | --------------------------------- | ------------------------------------------------------ |
+| Frontend           | React + Vite + Tailwind           | For speed, theming, and flexibility                    |
+| Routing            | React Router DOM                  | Navigation between mood log, dashboard, breathing, etc |
+| Auth               | Firebase Auth (JS SDK)            | OAuth only (Google, Microsoft, Apple)                  |
+| i18n               | `react-i18next`                   | Language toggle for English and Portuguese             |
+| State Management   | Local state + planned AuthContext | Minimal global state for auth and entries              |
+| Backend API        | Flask                             | Hosted on PythonAnywhere                               |
+| Database           | SQLite (v1), upgradeable          | Used by Flask to store entries                         |
+| Hosting (frontend) | Cloudflare Pages                  | DNS + static delivery                                  |
+| Hosting (backend)  | PythonAnywhere                    | Flask server and SQLite storage                        |
+| Dev Environment    | Local dev via Windsurf            | React root: `D:\Projects\InnSight`                     |
 
 ---
 
 ## 🎯 Feature Scope — Version 1
 
-| Feature                          | Details                                                  |
-| -------------------------------- | -------------------------------------------------------- |
-| Auth                             | Login via Google/Microsoft/Apple using Firebase          |
-| Welcome screen                   | Minimal one-pager with language toggle + login options   |
-| Daily intention                  | Input + update + view per day                            |
-| Mood logging                     | Emoji selector (3 max) + optional journal entry          |
-| Mood history                     | List by day, most recent first                           |
-| Breathing exercise               | Prebuilt UI (already coded), standalone page             |
-| Language switching               | EN/PT with persistent choice (localStorage or URL param) |
-| Theme switching                  | Light/dark toggle in UI                                  |
-| Analytics                        | Not in v1 — only historical list view                    |
-| Hosting @ innsight.lucaverse.dev | Via Cloudflare Pages, with full HTTPS                    |
+| Feature                          | Details                                           |
+| -------------------------------- | ------------------------------------------------- |
+| Auth                             | Login via Google/Microsoft/Apple using Firebase   |
+| Welcome screen                   | Minimal page with language + theme toggle + login |
+| Daily intention                  | Input + update + view per day                     |
+| Mood logging                     | Emoji selector (3 max) + optional journal entry   |
+| Mood history                     | List entries by day, most recent first            |
+| Breathing exercise               | Prebuilt UI, standalone page                      |
+| Language switching               | EN/PT with `localStorage` persistence             |
+| Theme switching                  | Light/dark toggle via class mode                  |
+| Analytics                        | Not in v1 — only historical list view             |
+| Hosting @ innsight.lucaverse.dev | Via Cloudflare Pages, full HTTPS                  |
 
 ---
 
-## 📁 Initial Folder Structure
+## 📁 Folder Structure
 
 ```
-D:\Projects\InnSight
-│
-├── frontend/                  # React app
-│   ├── public/
+InnSight/
+├── innsight-frontend/
 │   ├── src/
-│   │   ├── assets/            # Static icons, illustrations
-│   │   ├── components/        # Reusable UI blocks (Header, Button, EntryCard, etc)
-│   │   ├── pages/             # MoodLogPage, DashboardPage, BreathePage, WelcomePage
-│   │   ├── locales/           # i18n files (en.json, pt.json)
-│   │   ├── App.tsx
-│   │   └── main.tsx
+│   │   ├── lib/             # firebase.ts, api.ts, i18n.ts, date.ts
+│   │   ├── locales/         # en.json, pt.json
+│   │   ├── components/      # Header, MoodSelector, EntryCard, etc
+│   │   ├── pages/           # Welcome, Dashboard, Mood, Breathe
 │   ├── tailwind.config.js
 │   ├── vite.config.ts
 │   └── index.html
-│
-├── backend/                  # Flask API
+
+├── innsight-backend/
 │   ├── app.py
-│   ├── auth.py               # Firebase token validation
+│   ├── auth.py              # Firebase token validation
+│   ├── db/
+│   │   └── models.py
+│   ├── instance/
+│   │   └── innsight.db
 │   ├── routes/
 │   │   ├── mood.py
 │   │   ├── intention.py
-│   │   └── breathe.py        # Optional if you log sessions
-│   ├── db/
-│   │   └── models.py         # SQLAlchemy models
-│   ├── requirements.txt
-│   └── instance/
-│       └── innsight.db       # SQLite database (ignored by git)
-│
-└── README.md
+│   ├── init_db.py
+│   └── requirements.txt
+
+├── InnSight.code-workspace
+├── README.md
+└── .gitignore
 ```
 
 ---
 
-# 🧭 PROJECT PLAN — Step-by-Step Execution
+## 🧭 Project Plan — Step-by-Step
 
 ---
 
-## 🔹 STEP 1: SET UP FRONTEND REACT APP
+### 🔹 STEP 1: FRONTEND SETUP
 
-1. Initialize with Vite:
+1. Initialize frontend with Vite:
 
    ```bash
-   cd D:\Projects\InnSight
-   npm create vite@latest frontend --template react-ts
-   cd frontend && npm install
+   npm create vite@latest innsight-frontend --template react-ts
+   cd innsight-frontend && npm install
    ```
 
 2. Install dependencies:
@@ -110,149 +106,145 @@ D:\Projects\InnSight
 
 3. Configure:
 
-   * Tailwind (`tailwind.config.js`): enable `darkMode: 'class'`
-   * i18next (`src/locales/en.json`, `pt.json`)
-   * Firebase Auth: add config and initialize Firebase in a utility file
-   * React Router: set up routes for:
+   * Tailwind (`tailwind.config.js`): `darkMode: 'class'`
+   * Add `vite.config.ts`
+   * Create `lib/i18n.ts`, `lib/api.ts`, `lib/firebase.ts`, `lib/date.ts`
 
-     * `/` (Welcome)
-     * `/dashboard`
-     * `/mood`
-     * `/breathe`
+4. Set up routes:
 
-4. Build reusable components:
+   * `/` (Welcome)
+   * `/dashboard`
+   * `/mood`
+   * `/breathe`
 
-   * `Header` (with language and theme toggles)
-   * `EntryCard` (for previous entries)
-   * `IntentionInput`
-   * `MoodSelector`
-   * `BreathingModule` (import your existing code here)
+5. Build components:
 
-5. Implement Theme + Language toggles:
-
-   * Save preference in `localStorage`
-   * Dynamically load translations using `useTranslation`
+   * Header (theme toggle, lang toggle)
+   * IntentionInput
+   * MoodSelector
+   * EntryCard
+   * BreathingModule (imported)
 
 6. Implement Firebase Auth:
 
-   * Use Firebase UI or custom Google/Microsoft login buttons
-   * Store user info and token in localStorage
-   * Redirect to `/dashboard` after login
+   * Set up login with Google/Microsoft
+   * Store token
+   * Redirect to dashboard
+
+7. Setup language and theme toggles:
+
+   * i18n via `react-i18next`
+   * Save selected language + theme in `localStorage`
 
 ---
 
-## 🔹 STEP 2: BACKEND SETUP (FLASK @ PYTHONANYWHERE)
+### 🔹 STEP 2: BACKEND SETUP (Flask + PythonAnywhere)
 
-1. Create Flask project:
+1. Create and activate virtualenv:
 
    ```bash
-   cd D:\Projects\InnSight
-   mkdir backend && cd backend
    python -m venv venv
    venv\Scripts\activate
-   pip install flask flask-cors firebase-admin flask_sqlalchemy
+   pip install -r requirements.txt
    ```
 
-2. Create `app.py` with CORS, SQLite config, and route loading
+2. Flask app setup:
 
-3. Build basic routes:
+   * `app.py` with `CORS`, `SQLAlchemy`, blueprint registration
+   * SQLite DB in `instance/`
+
+3. API routes:
 
    * `POST /api/save-intention`
    * `GET /api/intention/today`
    * `POST /api/log-mood`
    * `GET /api/entries`
-   * (Optional) `POST /api/log-breathe`
 
-4. Add `auth.py` to verify Firebase token from frontend header
+4. Auth middleware (`auth.py`):
 
-5. Initialize SQLite DB and create models:
+   * Verifies Firebase ID token
 
-   * User (optional)
-   * MoodEntry
-   * Intention
+5. DB models (`models.py`):
 
-6. Enable CORS for dev + production:
+   * `MoodEntry`, `DailyIntention` (optional: `User`)
 
-   ```python
-   CORS(app, resources={r"/api/*": {"origins": "*"}})
-   ```
-
-7. Test locally using:
+6. Create DB:
 
    ```bash
-   flask run --reload
+   python init_db.py
    ```
 
 ---
 
-## 🔹 STEP 3: INTEGRATE FRONTEND + BACKEND
+### 🔹 STEP 3: CONNECT FRONTEND + BACKEND
 
-1. In frontend, set:
+1. Use base URL env:
 
    ```ts
-   const API_BASE_URL = import.meta.env.DEV
+   const BASE_URL = import.meta.env.DEV
      ? "http://localhost:5000/api"
      : "https://your-pythonanywhere-url/api";
    ```
 
-2. On login, get Firebase token and send it with each API call:
+2. Send token with requests:
 
    ```ts
-   const token = await firebase.auth().currentUser.getIdToken();
-   fetch(`${API_BASE_URL}/save-intention`, {
-     method: 'POST',
-     headers: {
-       'Authorization': `Bearer ${token}`,
-       'Content-Type': 'application/json'
-     },
-     body: JSON.stringify({...})
-   });
+   const token = await auth.currentUser?.getIdToken();
    ```
 
-3. Handle CRUD for:
+3. Use `lib/api.ts` to send:
 
-   * Intention (set/view)
-   * Mood entries (log/view)
+   * `POST /log-mood`
+   * `POST /save-intention`
+   * `GET /intention/today`
+   * `GET /entries`
 
-4. Test all endpoints locally
-
----
-
-## 🔹 STEP 4: DEPLOYMENT
-
-### 📤 Frontend (Cloudflare Pages)
-
-1. Push frontend to GitHub
-2. In Cloudflare Pages:
-
-   * Link GitHub repo
-   * Set build command: `npm run build`
-   * Output: `dist`
-3. Add custom domain: `innsight.lucaverse.dev`
-4. Configure DNS CNAME via Cloudflare dashboard
-
-### 🌐 Backend (PythonAnywhere)
-
-1. Upload backend folder
-2. Configure WSGI file to point to `app.py`
-3. Add environment variables if needed
-4. Make sure Flask is served on `/api/*` routes
-5. Add HTTPS URL to CORS allowed list
+4. Add date helpers in `lib/date.ts`
 
 ---
 
-## 🔹 STEP 5: FINAL POLISH
+### 🔹 STEP 4: DEPLOYMENT
 
-* Add favicon and brand visuals
-* Validate layout on mobile
-* Use `localStorage` or context to persist theme and language
-* Optimize fonts and loading
-* Run manual QA:
+#### ✅ Frontend (Cloudflare Pages)
 
-  * Login
-  * Log mood
-  * View history
-  * Toggle language
-  * Toggle theme
-  * Try breathing UI
+* Push `innsight-frontend` to GitHub
+* Connect to Cloudflare Pages
+* Set build command: `npm run build`, output: `dist`
+* Add custom domain: `innsight.lucaverse.dev`
 
+#### ✅ Backend (PythonAnywhere)
+
+* Upload `innsight-backend/`
+* Set WSGI to point to `app.py`
+* Enable CORS to your frontend domain
+* Keep `firebase-service-account.json` secure
+
+---
+
+### 🔹 STEP 5: FINAL POLISH
+
+* Add favicon and visuals
+* Validate on mobile/tablet
+* Add error messages for network/auth failures
+* Ensure Firebase `AuthContext` is implemented for global state
+* Confirm:
+
+  * [ ] Login works
+  * [ ] Mood entry is saved and shown
+  * [ ] Daily intention flows work
+  * [ ] i18n persists
+  * [ ] Theme toggle persists
+
+---
+
+## 📄 Additional Files
+
+* ✅ [`README.md`](./README.md) contains setup, usage, and deployment guide
+* ✅ `.gitignore` correctly ignores build files, venv, node\_modules, local DB
+* 🟡 Add `.env.example` for API base URL and Firebase keys
+
+---
+
+## 🔚 Summary
+
+Your current setup is **stable, modular, and clean**. Only the final frontend connections, auth state management, and deployment remain. This doc now matches your actual codebase and folder structure 100%.

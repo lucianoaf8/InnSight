@@ -83,7 +83,6 @@
 | 🕓 Create local timezone-aware `today` function               | 🔴 Not Done       |
 
 
-
 ---
 
 ## 🔹 SECTION 5: LANGUAGE SUPPORT (EN/PT)
