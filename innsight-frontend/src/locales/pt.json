@@ -41,6 +41,11 @@
       "logout": "Sair",
       "dark_mode": "Modo Escuro",
       "light_mode": "Modo Claro"
+    },
+    "notFound": {
+      "title": "Página Não Encontrada",
+      "message": "A página que você está procurando não existe ou foi movida.",
+      "returnHome": "Voltar ao Início"
     }
   }
   

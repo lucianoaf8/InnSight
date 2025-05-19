@@ -49,17 +49,17 @@ const EntryCard: React.FC<EntryCardProps> = ({
   
   // Get border color class based on emoji mood
   const getMoodBorderColorClass = (emojiString: string) => {
-    if (!emojiString) return 'border-[#2AB3B1] dark:border-[#2EC8C4]';
+    if (!emojiString) return 'border-primary-light dark:border-primary-dark';
 
     const emojis = emojiString.split(',');
     
     // Different colors for different moods
     if (emojis.some(e => ['😊', '😁', '😀', '🥰', '😌', '😎', '🔆'].includes(e))) {
-      return 'border-[#B8E6C1] dark:border-[#3ED8A0]'; // Positive mood
+      return 'border-support-light dark:border-support-dark'; // Positive mood
     } else if (emojis.some(e => ['😔', '😢', '😭', '😡', '😤', '😰'].includes(e))) {
-      return 'border-[#F58F6C] dark:border-[#C4B8FF]'; // Challenging mood
+      return 'border-accent-light dark:border-accent-dark'; // Challenging mood
     } else {
-      return 'border-[#2AB3B1] dark:border-[#2EC8C4]'; // Neutral mood
+      return 'border-primary-light dark:border-primary-dark'; // Neutral mood
     }
   };
   
@@ -84,19 +84,19 @@ const EntryCard: React.FC<EntryCardProps> = ({
   
   return (
     <div 
-      className={`p-5 rounded-2xl shadow-sm transition-transform duration-200 hover:scale-[1.01] mb-3 bg-white dark:bg-[#0A1D30] border-l-[3px] ${getMoodBorderColorClass(emojis)} ${className}`}
+      className={`p-5 rounded-2xl shadow-sm transition-transform duration-200 hover:scale-[1.01] mb-3 bg-surface-light dark:bg-surface-dark border-l-[3px] ${getMoodBorderColorClass(emojis)} ${className}`}
     >
       <div className="flex flex-col sm:flex-row sm:items-center">
         <div className="sm:w-1/4 mb-2 sm:mb-0">
           <div className="flex items-center">
-            <p className="text-sm font-medium mr-2 text-[#1F262E]/70 dark:text-[#E7ECEF]/70">
+            <p className="text-sm font-medium mr-2 text-text-secondary-light dark:text-text-secondary-dark">
               {time}
             </p>
             <span className="text-sm" title={getPeriodLabel(period)}>
               {getPeriodIcon(period)}
             </span>
           </div>
-          <p className="text-xs text-[#1F262E]/70 dark:text-[#E7ECEF]/70">
+          <p className="text-xs text-text-secondary-light dark:text-text-secondary-dark">
             {getMoodSummary(emojis)}
           </p>
         </div>
@@ -104,7 +104,7 @@ const EntryCard: React.FC<EntryCardProps> = ({
           <p className="text-2xl">{renderEmojis(emojis)}</p>
         </div>
         <div className="sm:w-2/4">
-          <p className="text-sm text-[#1F262E] dark:text-[#E7ECEF]">
+          <p className="text-sm text-text-primary-light dark:text-text-primary-dark">
             {journal ? `"${journal}"` : ''}
           </p>
         </div>

@@ -76,7 +76,7 @@ const Dashboard = () => {
 
   // Show loading state while authentication is being determined
   if (loading) {
-    return <div className="flex justify-center items-center h-screen">{t('common.loading')}</div>;
+    return <div className="flex justify-center items-center h-screen bg-base-light dark:bg-base-dark text-text-primary-light dark:text-text-primary-dark">{t('common.loading')}</div>;
   }
 
   // If user isn't authenticated, don't render dashboard content (will redirect via useEffect)
@@ -85,11 +85,11 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F5FAFD] dark:bg-[#0B2540] font-sans">
+    <div className="min-h-screen flex flex-col bg-base-light dark:bg-base-dark font-sans">
       {/* Header */}
-      <header className="px-4 py-3 shadow-sm flex justify-between items-center bg-white dark:bg-[#0A1D30] border-b border-gray-200 dark:border-[#15324D]">
+      <header className="px-4 py-3 shadow-sm flex justify-between items-center bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark">
         <div className="flex items-center">
-          <h1 className="text-xl font-bold text-[#2AB3B1] dark:text-[#2EC8C4]">
+          <h1 className="text-xl font-bold text-primary-light dark:text-primary-dark">
             {t('app.name')}
           </h1>
         </div>
@@ -104,8 +104,8 @@ const Dashboard = () => {
         {isLoadingData ? (
           <div className="flex justify-center items-center py-20">
             <div className="animate-pulse flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full mb-4 bg-[#2AB3B1] dark:bg-[#2EC8C4]"></div>
-              <p className="text-[#1F262E] dark:text-[#E7ECEF]">
+              <div className="w-12 h-12 rounded-full mb-4 bg-primary-light dark:bg-primary-dark"></div>
+              <p className="text-text-primary-light dark:text-text-primary-dark">
                 {t('common.loading')}
               </p>
             </div>
@@ -115,20 +115,20 @@ const Dashboard = () => {
             {/* Greeting & Date Section with Streak */}
             <div className="mb-6 flex flex-wrap items-center justify-between">
               <div className="mr-4">
-                <h2 className="text-2xl font-bold mb-1 text-[#1F262E] dark:text-[#E7ECEF]">
+                <h2 className="text-2xl font-bold mb-1 text-text-primary-light dark:text-text-primary-dark">
                   {t('dashboard.greeting', { name: currentUser.displayName || (currentUser.email ? currentUser.email.split('@')[0] : t('common.user')) })}
                 </h2>
-                <DateDisplay className="text-base text-[#1F262E]/70 dark:text-[#E7ECEF]/70" />
+                <DateDisplay className="text-base text-text-secondary-light dark:text-text-secondary-dark" />
               </div>
               
               {/* Streak Counter */}
-              <div className="flex items-center rounded-full px-4 py-2 shadow-sm mt-2 sm:mt-0 bg-white dark:bg-[#0A1D30] border border-[#F58F6C] dark:border-[#3ED8A0]">
-                <Flame size={18} className="mr-2 text-[#F58F6C] dark:text-[#3ED8A0]" />
+              <div className="flex items-center rounded-full px-4 py-2 shadow-sm mt-2 sm:mt-0 bg-surface-light dark:bg-surface-dark border border-accent-light dark:border-support-dark">
+                <Flame size={18} className="mr-2 text-accent-light dark:text-support-dark" />
                 <div>
-                  <p className="text-xs font-medium text-[#1F262E]/70 dark:text-[#E7ECEF]/70">
+                  <p className="text-xs font-medium text-text-secondary-light dark:text-text-secondary-dark">
                     {t('dashboard.streak_days')}
                   </p>
-                  <p className="text-xl font-bold text-[#1F262E] dark:text-[#E7ECEF]">
+                  <p className="text-xl font-bold text-text-primary-light dark:text-text-primary-dark">
                     {streak}
                   </p>
                 </div>
@@ -136,15 +136,15 @@ const Dashboard = () => {
             </div>
             
             {/* Quote Card */}
-            <div className="mb-6 rounded-2xl shadow-sm overflow-hidden transition-transform duration-300 hover:scale-[1.01] bg-white dark:bg-[#0A1D30] border-l-[3px] border-[#F58F6C] dark:border-[#C4B8FF]">
+            <div className="mb-6 rounded-2xl shadow-sm overflow-hidden transition-transform duration-300 hover:scale-[1.01] bg-surface-light dark:bg-surface-dark border-l-[3px] border-accent-light dark:border-accent-dark">
               <div className="p-5">
                 <div className="flex items-center mb-2">
-                  <Calendar size={18} className="mr-2 text-[#F58F6C] dark:text-[#C4B8FF]" />
-                  <p className="font-medium text-sm text-[#1F262E]/70 dark:text-[#E7ECEF]/70">
+                  <Calendar size={18} className="mr-2 text-accent-light dark:text-accent-dark" />
+                  <p className="font-medium text-sm text-text-secondary-light dark:text-text-secondary-dark">
                     {t('dashboard.quote_heading')}
                   </p>
                 </div>
-                <p className="text-base italic text-[#1F262E] dark:text-[#E7ECEF]">
+                <p className="text-base italic text-text-primary-light dark:text-text-primary-dark">
                   "{dailyQuote}"
                 </p>
               </div>
