@@ -3,7 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import Dashboard from '../pages/Dashboard'
 import { useAuth } from '../lib/firebase'
 import { BrowserRouter } from 'react-router-dom'
-import React from 'react'
+import type { User } from 'firebase/auth'
 
 // Mock the modules that Dashboard depends on
 vi.mock('../lib/firebase', () => ({
@@ -58,16 +58,35 @@ vi.mock('../components/EntriesPreview', () => ({
   },
 }))
 
+// Create a mock user factory to avoid duplication
+const createMockUser = (): User => ({
+  uid: 'test-uid',
+  email: 'test@example.com',
+  displayName: 'Test User',
+  emailVerified: false,
+  isAnonymous: false,
+  metadata: {},
+  providerData: [],
+  refreshToken: '',
+  tenantId: null,
+  delete: vi.fn(),
+  getIdToken: vi.fn().mockResolvedValue('mock-token'),
+  getIdTokenResult: vi.fn(),
+  reload: vi.fn(),
+  toJSON: vi.fn(),
+  phoneNumber: null,
+  photoURL: null,
+  providerId: 'firebase'
+})
+
 describe('Dashboard Component', () => {
-  const mockNavigate = vi.fn()
   
   beforeEach(() => {
     vi.clearAllMocks()
-    // Mock useNavigate
+    // Mock useAuth
     vi.mocked(useAuth).mockReturnValue({
       currentUser: null,
       loading: true,
-      login: vi.fn(),
       logout: vi.fn(),
     })
   })
@@ -77,7 +96,6 @@ describe('Dashboard Component', () => {
     vi.mocked(useAuth).mockReturnValue({
       currentUser: null,
       loading: true,
-      login: vi.fn(),
       logout: vi.fn(),
     })
 
@@ -95,7 +113,6 @@ describe('Dashboard Component', () => {
     vi.mocked(useAuth).mockReturnValue({
       currentUser: null,
       loading: false,
-      login: vi.fn(),
       logout: vi.fn(),
     })
 
@@ -112,13 +129,8 @@ describe('Dashboard Component', () => {
   it('should render dashboard components when authenticated', async () => {
     // Mock authenticated state
     vi.mocked(useAuth).mockReturnValue({
-      currentUser: { 
-        email: 'test@example.com',
-        displayName: 'Test User',
-        getIdToken: vi.fn().mockResolvedValue('mock-token')
-      } as any,
+      currentUser: createMockUser(),
       loading: false,
-      login: vi.fn(),
       logout: vi.fn(),
     })
 
@@ -146,13 +158,8 @@ describe('Dashboard Component', () => {
   it('should update streak when EntriesPreview calls the callback', async () => {
     // Mock authenticated state
     vi.mocked(useAuth).mockReturnValue({
-      currentUser: { 
-        email: 'test@example.com',
-        displayName: 'Test User',
-        getIdToken: vi.fn().mockResolvedValue('mock-token')
-      } as any,
+      currentUser: createMockUser(),
       loading: false,
-      login: vi.fn(),
       logout: vi.fn(),
     })
 

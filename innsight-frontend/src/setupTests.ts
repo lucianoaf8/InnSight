@@ -44,13 +44,22 @@ Object.defineProperty(window, 'localStorage', {
 
 // Mock firebase auth
 vi.mock('firebase/auth', async () => {
-  const actual = await vi.importActual('firebase/auth')
+  const actual = await vi.importActual<Record<string, unknown>>('firebase/auth')
   return {
-    ...actual as any,
-    getAuth: vi.fn(),
-    onAuthStateChanged: vi.fn(),
-    signOut: vi.fn(),
-    GoogleAuthProvider: vi.fn(),
+    ...actual,
+    getAuth: vi.fn(() => ({})),
+    onAuthStateChanged: vi.fn((_auth, callback) => {
+      // Store callback for tests to trigger auth changes
+      if (typeof callback === 'function') {
+        (global as Record<string, unknown>).__authStateCallback = callback;
+      }
+      return vi.fn(); // Return unsubscribe function
+    }),
+    signOut: vi.fn(() => Promise.resolve()),
+    signInWithPopup: vi.fn(() => Promise.resolve({
+      user: { uid: 'test-uid', email: 'test@example.com' }
+    })),
+    GoogleAuthProvider: vi.fn(() => ({}))
   }
 })
 

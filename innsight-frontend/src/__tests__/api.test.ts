@@ -13,7 +13,7 @@ describe('API Request Functions', () => {
   })
 
   it('should include authorization token in headers when token is provided', async () => {
-    const mockResponse = { json: () => Promise.resolve({ data: 'test' }) }
+    const mockResponse = { ok: true, json: () => Promise.resolve({ data: 'test' }) }
     // @ts-ignore
     global.fetch.mockResolvedValueOnce(mockResponse)
 
@@ -31,7 +31,7 @@ describe('API Request Functions', () => {
   })
 
   it('should not include authorization token when not provided', async () => {
-    const mockResponse = { json: () => Promise.resolve({ data: 'test' }) }
+    const mockResponse = { ok: true, json: () => Promise.resolve({ data: 'test' }) }
     // @ts-ignore
     global.fetch.mockResolvedValueOnce(mockResponse)
 
@@ -48,7 +48,7 @@ describe('API Request Functions', () => {
   })
 
   it('should use the correct HTTP method', async () => {
-    const mockResponse = { json: () => Promise.resolve({ data: 'test' }) }
+    const mockResponse = { ok: true, json: () => Promise.resolve({ data: 'test' }) }
     // @ts-ignore
     global.fetch.mockResolvedValueOnce(mockResponse)
 
