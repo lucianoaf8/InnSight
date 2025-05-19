@@ -7,7 +7,8 @@
       "subtitle": "Seu companheiro pessoal de bem-estar mental.",
       "login_with": "Entrar com",
       "language": "Idioma",
-      "theme": "Tema"
+      "theme": "Tema",
+      "what_is_innsight": "Seu companheiro diário para o bem-estar mental"
     },
     "dashboard": {
       "today": "Hoje é {{date}}",

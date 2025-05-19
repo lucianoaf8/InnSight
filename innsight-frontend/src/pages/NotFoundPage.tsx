@@ -17,7 +17,7 @@ const NotFoundPage: React.FC = () => {
   const homePath = currentUser ? '/dashboard' : '/';
   
   return (
-    <div className="min-h-screen flex flex-col bg-[#F5FAFD] dark:bg-[#0B2540] text-[#1F262E] dark:text-[#E7ECEF] font-sans transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-base-light dark:bg-base-dark text-text-primary-light dark:text-text-primary-dark font-sans transition-colors duration-300">
       {/* Header */}
       <header className="px-6 py-4 flex justify-between items-center">
         <Link 

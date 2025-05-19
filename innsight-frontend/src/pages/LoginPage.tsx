@@ -36,17 +36,17 @@ const Welcome: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-[#F5FAFD] dark:bg-[#0B2540]">
+      <div className="flex justify-center items-center min-h-screen bg-base-light dark:bg-base-dark">
         <div className="animate-pulse flex flex-col items-center">
-          <div className="w-12 h-12 rounded-full mb-4 bg-[#2AB3B1] dark:bg-[#2EC8C4]"></div>
-          <p className="text-[#1F262E] dark:text-[#E7ECEF]">{t('common.loading')}</p>
+          <div className="w-12 h-12 rounded-full mb-4 bg-primary-light dark:bg-primary-dark"></div>
+          <p className="text-text-primary-light dark:text-text-primary-dark">{t('common.loading')}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F5FAFD] dark:bg-[#0B2540] text-[#1F262E] dark:text-[#E7ECEF] font-sans transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-base-light dark:bg-base-dark text-text-primary-light dark:text-text-primary-dark font-sans transition-colors duration-300">
       {/* Header */}
       <header className="px-6 py-4 flex justify-end items-center">
         <div className="flex items-center space-x-3">
@@ -58,23 +58,23 @@ const Welcome: React.FC = () => {
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center p-6 max-w-md mx-auto w-full text-center">
         {/* Logo/Icon */}
-        <div className="mb-8 bg-white dark:bg-[#0A1D30] p-5 rounded-full shadow-sm transition-all duration-300 hover:scale-[1.02]">
-          <Brain size={56} className="text-[#2AB3B1] dark:text-[#2EC8C4]" />
+        <div className="mb-8 bg-surface-light dark:bg-surface-dark p-5 rounded-full shadow-sm transition-all duration-300 hover:scale-[1.02]">
+          <Brain size={56} className="text-primary-light dark:text-primary-dark" />
         </div>
 
         {/* Welcome Text */}
-        <h1 className="text-[1.5rem] font-bold mb-2 text-[#2AB3B1] dark:text-[#2EC8C4]">
+        <h1 className="text-[1.5rem] font-bold mb-2 text-primary-light dark:text-primary-dark">
           {t('welcome.title')}
         </h1>
         
-        <p className="text-base mb-10 text-center max-w-sm text-[#1F262E]/70 dark:text-[#E7ECEF]/70">
+        <p className="text-base mb-10 text-center max-w-sm text-text-secondary-light dark:text-text-secondary-dark">
           {t('welcome.subtitle')}
         </p>
 
         {/* Google Login Button */}
         <button
           onClick={handleGoogleSignIn}
-          className="flex items-center justify-center w-full max-w-xs px-6 py-3 bg-white dark:bg-[#0A1D30] border border-gray-200 dark:border-[#15324D] rounded-xl shadow-sm hover:shadow transition-all duration-200 hover:scale-[1.02] text-[#1F262E] dark:text-[#E7ECEF]"
+          className="flex items-center justify-center w-full max-w-xs px-6 py-3 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl shadow-sm hover:shadow transition-all duration-200 hover:scale-[1.02] text-text-primary-light dark:text-text-primary-dark"
         >
           <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24" fill="none">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -86,14 +86,14 @@ const Welcome: React.FC = () => {
         </button>
 
         {/* "What is InnSight?" Text (not a link) */}
-        <p className="text-sm mt-8 text-[#2AB3B1] dark:text-[#2EC8C4]">
+        <p className="text-sm mt-8 text-primary-light dark:text-primary-dark">
           {t('welcome.what_is_innsight')}
         </p>
       </main>
 
       {/* Footer */}
-      <footer className="p-4 text-center text-xs text-[#1F262E]/60 dark:text-[#E7ECEF]/60">
-        &copy; {new Date().getFullYear()} InnSight
+      <footer className="p-4 text-center text-xs text-text-secondary-light dark:text-text-secondary-dark">
+        &copy; {new Date().getFullYear()} {t('app.name')}
       </footer>
     </div>
   );

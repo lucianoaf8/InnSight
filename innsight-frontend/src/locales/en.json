@@ -7,7 +7,8 @@
       "subtitle": "Your personal mental wellness companion.",
       "login_with": "Login with",
       "language": "Language",
-      "theme": "Theme"
+      "theme": "Theme",
+      "what_is_innsight": "Your daily companion for mental well-being"
     },
     "dashboard": {
       "today": "Today is {{date}}",
