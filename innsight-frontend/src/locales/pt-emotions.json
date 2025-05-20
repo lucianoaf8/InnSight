@@ -1,0 +1,263 @@
+{
+  "app": {
+    "name": "InnSight"
+  },
+  "welcome": {
+    "title": "Bem-vindo ao InnSight",
+    "subtitle": "Seu companheiro pessoal de bem-estar mental.",
+    "login_with": "Entrar com",
+    "language": "Idioma",
+    "theme": "Tema",
+    "what_is_innsight": "Seu companheiro diário para o bem-estar mental"
+  },
+  "dashboard": {
+    "greeting": "Olá, {{name}}!",
+    "today": "Hoje é {{date}}",
+    "quote_heading": "Reflexão de Hoje",
+    "streak_days": "{{count}} dias em sequência",
+    "daily_intention": "Intenção Diária",
+    "edit_intention": "Editar Intenção",
+    "set_intention": "Defina sua intenção para hoje...",
+    "log_mood": "Registrar Humor",
+    "breathing_exercise": "Exercício de Respiração",
+    "previous_entries": "Registros Anteriores",
+    "no_entries": "Nenhum registro de humor ainda. Comece a registrar seus humores!"
+  },
+  "mood": {
+    "how_feeling": "Como você está se sentindo?",
+    "select_emotions": "Selecione até 3 emoções que refletem seu estado atual",
+    "why_feeling": "Por que você se sente assim?",
+    "journal_placeholder": "Escreva algumas palavras sobre por que você se sente assim...",
+    "save": "Salvar",
+    "snooze": "Adiar",
+    "emoji_positive": "Positivas",
+    "emoji_neutral": "Neutras",
+    "emoji_negative": "Negativas",
+    "log_success": "Humor registrado com sucesso!",
+    "summary": {
+      "positive": "Positivo",
+      "neutral": "Neutro",
+      "challenging": "Desafiador"
+    },
+    "motivational": {
+      "1": "Reconhecer suas emoções é um passo poderoso para o bem-estar.",
+      "2": "Obrigado por fazer este check-in consigo mesmo hoje.",
+      "3": "Cada vez que você registra seu humor, você constrói consciência emocional.",
+      "4": "Seus sentimentos são importantes. Obrigado por honrá-los hoje.",
+      "5": "A reflexão regular ajuda você a se entender melhor."
+    }
+  },
+  "breathe": {
+    "start": "Iniciar Exercício de Respiração",
+    "inhale": "Inspire",
+    "hold": "Segure",
+    "exhale": "Expire",
+    "done": "Concluído",
+    "relax_message": "Relaxe e siga o ritmo."
+  },
+  "common": {
+    "loading": "Carregando...",
+    "save": "Salvar",
+    "saving": "Salvando...",
+    "logout": "Sair",
+    "dark_mode": "Modo Escuro",
+    "light_mode": "Modo Claro",
+    "back": "Voltar",
+    "cancel": "Cancelar",
+    "view_all": "Ver Todos",
+    "view_less": "Ver Menos",
+    "back_to_dashboard": "Voltar ao Painel",
+    "user": "Usuário"
+  },
+  "notFound": {
+    "title": "Página Não Encontrada",
+    "message": "A página que você está procurando não existe ou foi movida.",
+    "returnHome": "Voltar para Início"
+  },
+  "errors": {
+    "save_failed": "Falha ao salvar. Tente novamente.",
+    "fetch_entries": "Não foi possível carregar seus registros."
+  },
+  "emotions": {
+    "happy": {
+      "name": "Feliz",
+      "description": "Um sentimento de prazer e contentamento."
+    },
+    "joyful": {
+      "name": "Alegre",
+      "description": "Um sentimento de grande prazer e felicidade."
+    },
+    "loving": {
+      "name": "Amoroso",
+      "description": "Sentir afeição ou cuidado profundo por alguém ou algo."
+    },
+    "adored": {
+      "name": "Adorado",
+      "description": "Sentir-se profundamente amado e estimado."
+    },
+    "content": {
+      "name": "Contente",
+      "description": "Em um estado de felicidade pacífica e satisfação."
+    },
+    "confident": {
+      "name": "Confiante",
+      "description": "Sentir-se seguro e certo de suas habilidades."
+    },
+    "excited": {
+      "name": "Empolgado",
+      "description": "Sentir-se entusiasmado e ansioso por algo."
+    },
+    "blessed": {
+      "name": "Abençoado",
+      "description": "Sentir-se afortunado e grato pelo que tem."
+    },
+    "pleasant": {
+      "name": "Agradável",
+      "description": "Experimentando sentimentos agradáveis e prazerosos."
+    },
+    "cheerful": {
+      "name": "Animado",
+      "description": "Visivelmente feliz e otimista."
+    },
+    "delighted": {
+      "name": "Encantado",
+      "description": "Sentindo grande prazer e alegria."
+    },
+    "inspired": {
+      "name": "Inspirado",
+      "description": "Mentalmente estimulado para sentir ou fazer algo criativo."
+    },
+    "celebrating": {
+      "name": "Celebrando",
+      "description": "Sentindo alegria por uma conquista ou ocasião especial."
+    },
+    "peaceful": {
+      "name": "Tranquilo",
+      "description": "Livre de perturbações; pacífico e calmo."
+    },
+    "grateful": {
+      "name": "Grato",
+      "description": "Sentindo gratidão e apreciação."
+    },
+    "neutral": {
+      "name": "Neutro",
+      "description": "Nem positivo nem negativo; emocionalmente no meio."
+    },
+    "speechless": {
+      "name": "Sem palavras",
+      "description": "Tão surpreso ou comovido que não consegue encontrar palavras para responder."
+    },
+    "expressionless": {
+      "name": "Inexpressivo",
+      "description": "Não mostrando emoção no rosto ou na maneira."
+    },
+    "thinking": {
+      "name": "Pensativo",
+      "description": "Focado em pensamentos, considerando algo profundamente."
+    },
+    "smirking": {
+      "name": "Sorriso irônico",
+      "description": "Tendo um sorriso presunçoso, convencido ou bobo."
+    },
+    "surprised": {
+      "name": "Surpreso",
+      "description": "Sentindo-se atônito ou surpreendido por algo inesperado."
+    },
+    "confused": {
+      "name": "Confuso",
+      "description": "Incapaz de pensar claramente ou entender algo."
+    },
+    "unamused": {
+      "name": "Não divertido",
+      "description": "Não achando algo engraçado ou divertido."
+    },
+    "eyeroll": {
+      "name": "Revirar de olhos",
+      "description": "Sentindo-se indiferente, exasperado ou incrédulo."
+    },
+    "awkward": {
+      "name": "Desajeitado",
+      "description": "Sentindo-se desconfortável, envergonhado ou fora de lugar."
+    },
+    "tired": {
+      "name": "Cansado",
+      "description": "Precisando de sono ou descanso; fatigado."
+    },
+    "sleepy": {
+      "name": "Sonolento",
+      "description": "Pronto ou inclinado a dormir; com sono."
+    },
+    "quiet": {
+      "name": "Quieto",
+      "description": "Fazendo pouco ou nenhum barulho; mentalmente contido."
+    },
+    "astonished": {
+      "name": "Estupefato",
+      "description": "Muito surpreso ou impressionado; pasmo."
+    },
+    "curious": {
+      "name": "Curioso",
+      "description": "Ansioso para saber ou aprender algo."
+    },
+    "sad": {
+      "name": "Triste",
+      "description": "Sentindo-se infeliz ou mostrando tristeza."
+    },
+    "crying": {
+      "name": "Chorando",
+      "description": "Derramando lágrimas, tipicamente por tristeza ou aflição."
+    },
+    "sobbing": {
+      "name": "Soluçando",
+      "description": "Chorando com suspiros convulsivos incontroláveis."
+    },
+    "angry": {
+      "name": "Irritado",
+      "description": "Sentindo ou mostrando forte aborrecimento ou hostilidade."
+    },
+    "frustrated": {
+      "name": "Frustrado",
+      "description": "Sentindo ou expressando angústia devido à incapacidade de alcançar objetivos."
+    },
+    "anxious": {
+      "name": "Ansioso",
+      "description": "Preocupado e nervoso sobre algo."
+    },
+    "exhausted": {
+      "name": "Exausto",
+      "description": "Extremamente cansado, drenado de energia ou recursos."
+    },
+    "weary": {
+      "name": "Abatido",
+      "description": "Sentindo ou mostrando extremo cansaço, especialmente após trabalho árduo."
+    },
+    "overwhelmed": {
+      "name": "Sobrecarregado",
+      "description": "Sentindo-se enterrado ou afogado sob uma grande massa de algo."
+    },
+    "fearful": {
+      "name": "Temeroso",
+      "description": "Sentindo medo ou mostrando medo ou ansiedade."
+    },
+    "worried": {
+      "name": "Preocupado",
+      "description": "Ansioso ou perturbado com problemas reais ou potenciais."
+    },
+    "distressed": {
+      "name": "Angustiado",
+      "description": "Sofrendo extrema ansiedade, tristeza ou dor."
+    },
+    "disappointed": {
+      "name": "Decepcionado",
+      "description": "Triste ou descontente porque as expectativas não foram atendidas."
+    },
+    "anguished": {
+      "name": "Atormentado",
+      "description": "Experimentando dor ou sofrimento mental ou físico severo."
+    },
+    "vulnerable": {
+      "name": "Vulnerável",
+      "description": "Exposto a possíveis danos, seja física ou emocionalmente."
+    }
+  }
+}

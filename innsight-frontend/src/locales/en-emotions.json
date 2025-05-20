@@ -1,0 +1,263 @@
+{
+  "app": {
+    "name": "InnSight"
+  },
+  "welcome": {
+    "title": "Welcome to InnSight",
+    "subtitle": "Your personal mental wellness companion.",
+    "login_with": "Login with",
+    "language": "Language",
+    "theme": "Theme",
+    "what_is_innsight": "Your daily companion for mental well-being"
+  },
+  "dashboard": {
+    "greeting": "Hello, {{name}}!",
+    "today": "Today is {{date}}",
+    "quote_heading": "Today's Reflection",
+    "streak_days": "{{count}} days in a row",
+    "daily_intention": "Daily Intention",
+    "edit_intention": "Edit Intention",
+    "set_intention": "Set your intention for today...",
+    "log_mood": "Log Mood",
+    "breathing_exercise": "Breathing Exercise",
+    "previous_entries": "Previous Entries",
+    "no_entries": "No mood entries yet. Start logging your moods!"
+  },
+  "mood": {
+    "how_feeling": "How are you feeling?",
+    "select_emotions": "Select up to 3 emotions that reflect your current state",
+    "why_feeling": "Why do you feel this way?",
+    "journal_placeholder": "Write a few words about why you feel this way...",
+    "save": "Save",
+    "snooze": "Snooze",
+    "emoji_positive": "Positive",
+    "emoji_neutral": "Neutral",
+    "emoji_negative": "Negative",
+    "log_success": "Mood logged successfully!",
+    "summary": {
+      "positive": "Positive",
+      "neutral": "Neutral",
+      "challenging": "Challenging"
+    },
+    "motivational": {
+      "1": "Acknowledging your emotions is a powerful step toward well-being.",
+      "2": "Thank you for checking in with yourself today.",
+      "3": "Each time you log your mood, you build emotional awareness.",
+      "4": "Your feelings matter. Thank you for honoring them today.",
+      "5": "Regular reflection helps you understand yourself better."
+    }
+  },
+  "breathe": {
+    "start": "Start Breathing Exercise",
+    "inhale": "Inhale",
+    "hold": "Hold",
+    "exhale": "Exhale",
+    "done": "Done",
+    "relax_message": "Relax and follow the rhythm."
+  },
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "saving": "Saving...",
+    "logout": "Logout",
+    "dark_mode": "Dark Mode",
+    "light_mode": "Light Mode",
+    "back": "Back",
+    "cancel": "Cancel",
+    "view_all": "View All",
+    "view_less": "View Less",
+    "back_to_dashboard": "Back to Dashboard",
+    "user": "User"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "message": "The page you are looking for doesn't exist or has been moved.",
+    "returnHome": "Return Home"
+  },
+  "errors": {
+    "save_failed": "Failed to save. Try again.",
+    "fetch_entries": "Couldn't load your entries."
+  },
+  "emotions": {
+    "happy": {
+      "name": "Happy",
+      "description": "A feeling of pleasure and contentment."
+    },
+    "joyful": {
+      "name": "Joyful",
+      "description": "A feeling of great pleasure and happiness."
+    },
+    "loving": {
+      "name": "Loving",
+      "description": "Feeling affection or deep care for someone or something."
+    },
+    "adored": {
+      "name": "Adored",
+      "description": "Feeling deeply loved and cherished."
+    },
+    "content": {
+      "name": "Content",
+      "description": "In a state of peaceful happiness and satisfaction."
+    },
+    "confident": {
+      "name": "Confident",
+      "description": "Feeling self-assured and certain about your abilities."
+    },
+    "excited": {
+      "name": "Excited",
+      "description": "Feeling enthusiastic and eager about something."
+    },
+    "blessed": {
+      "name": "Blessed",
+      "description": "Feeling fortunate and grateful for what you have."
+    },
+    "pleasant": {
+      "name": "Pleasant",
+      "description": "Experiencing agreeable, enjoyable feelings."
+    },
+    "cheerful": {
+      "name": "Cheerful",
+      "description": "Noticeably happy and optimistic."
+    },
+    "delighted": {
+      "name": "Delighted",
+      "description": "Feeling great pleasure and joy."
+    },
+    "inspired": {
+      "name": "Inspired",
+      "description": "Mentally stimulated to feel or do something creative."
+    },
+    "celebrating": {
+      "name": "Celebrating",
+      "description": "Feeling joyful about a special achievement or occasion."
+    },
+    "peaceful": {
+      "name": "Peaceful",
+      "description": "Free from disturbance; tranquil and calm."
+    },
+    "grateful": {
+      "name": "Grateful",
+      "description": "Feeling thankful and appreciative."
+    },
+    "neutral": {
+      "name": "Neutral",
+      "description": "Neither positive nor negative; in the middle emotionally."
+    },
+    "speechless": {
+      "name": "Speechless",
+      "description": "So surprised or moved you cannot find words to respond."
+    },
+    "expressionless": {
+      "name": "Expressionless",
+      "description": "Showing no emotion on your face or in your manner."
+    },
+    "thinking": {
+      "name": "Thinking",
+      "description": "Focused on thoughts, considering something deeply."
+    },
+    "smirking": {
+      "name": "Smirking",
+      "description": "Having a self-satisfied, conceited, or silly smile."
+    },
+    "surprised": {
+      "name": "Surprised",
+      "description": "Feeling astonished or taken aback by something unexpected."
+    },
+    "confused": {
+      "name": "Confused",
+      "description": "Unable to think clearly or understand something."
+    },
+    "unamused": {
+      "name": "Unamused",
+      "description": "Not finding something funny or entertaining."
+    },
+    "eyeroll": {
+      "name": "Eye roll",
+      "description": "Feeling dismissive, exasperated, or disbelieving."
+    },
+    "awkward": {
+      "name": "Awkward",
+      "description": "Feeling uncomfortable, embarrassed, or out of place."
+    },
+    "tired": {
+      "name": "Tired",
+      "description": "In need of sleep or rest; fatigued."
+    },
+    "sleepy": {
+      "name": "Sleepy",
+      "description": "Ready or inclined to sleep; drowsy."
+    },
+    "quiet": {
+      "name": "Quiet",
+      "description": "Making little or no noise; mentally subdued."
+    },
+    "astonished": {
+      "name": "Astonished",
+      "description": "Greatly surprised or impressed; amazed."
+    },
+    "curious": {
+      "name": "Curious",
+      "description": "Eager to know or learn something."
+    },
+    "sad": {
+      "name": "Sad",
+      "description": "Feeling unhappy or showing sorrow."
+    },
+    "crying": {
+      "name": "Crying",
+      "description": "Shedding tears, typically from sorrow or distress."
+    },
+    "sobbing": {
+      "name": "Sobbing",
+      "description": "Crying with uncontrollable, convulsive gasping."
+    },
+    "angry": {
+      "name": "Angry",
+      "description": "Feeling or showing strong annoyance or hostility."
+    },
+    "frustrated": {
+      "name": "Frustrated",
+      "description": "Feeling or expressing distress due to inability to achieve goals."
+    },
+    "anxious": {
+      "name": "Anxious",
+      "description": "Worried and nervous about something."
+    },
+    "exhausted": {
+      "name": "Exhausted",
+      "description": "Extremely tired, drained of energy or resources."
+    },
+    "weary": {
+      "name": "Weary",
+      "description": "Feeling or showing extreme tiredness, especially after hard work."
+    },
+    "overwhelmed": {
+      "name": "Overwhelmed",
+      "description": "Feeling buried or drowned beneath a huge mass of something."
+    },
+    "fearful": {
+      "name": "Fearful",
+      "description": "Feeling afraid or showing fear or anxiety."
+    },
+    "worried": {
+      "name": "Worried",
+      "description": "Anxious or troubled about actual or potential problems."
+    },
+    "distressed": {
+      "name": "Distressed",
+      "description": "Suffering extreme anxiety, sorrow, or pain."
+    },
+    "disappointed": {
+      "name": "Disappointed",
+      "description": "Sad or displeased because expectations weren't met."
+    },
+    "anguished": {
+      "name": "Anguished",
+      "description": "Experiencing severe mental or physical pain or suffering."
+    },
+    "vulnerable": {
+      "name": "Vulnerable",
+      "description": "Exposed to possible harm, either physically or emotionally."
+    }
+  }
+}
