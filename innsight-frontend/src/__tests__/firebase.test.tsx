@@ -1,4 +1,12 @@
+/** @vitest-environment jsdom */
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+
+// Polyfill localStorage for jsdom
+if (typeof globalThis.localStorage === 'undefined') {
+  Object.defineProperty(globalThis, 'localStorage', {
+    value: { getItem: () => null, setItem: () => {}, removeItem: () => {} },
+  });
+}
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
 import { AuthProvider, useAuth } from '../lib/firebase'
 import { renderHook, act } from '@testing-library/react'

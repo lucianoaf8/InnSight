@@ -1,3 +1,20 @@
+/** @vitest-environment jsdom */
+// Polyfill matchMedia and localStorage for jsdom environment
+if (typeof window.matchMedia !== 'function') {
+  Object.defineProperty(window, 'matchMedia', {
+    value: () => ({ matches: false, addListener: () => {}, removeListener: () => {} }),
+  });
+}
+if (typeof window.localStorage !== 'object') {
+  Object.defineProperty(window, 'localStorage', {
+    value: {
+      getItem: () => null,
+      setItem: () => {},
+      removeItem: () => {},
+    },
+  });
+}
+
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import ThemeToggle from '../components/ThemeToggle';
@@ -57,4 +74,3 @@ describe('ThemeToggle Component', () => {
     // Check localStorage was updated
     expect(localStorage.getItem('theme')).toBe('dark');
   });
-});

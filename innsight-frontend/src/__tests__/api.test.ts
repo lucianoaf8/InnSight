@@ -87,4 +87,26 @@ describe('API Request Functions', () => {
 
     await expect(apiRequest('/test-endpoint')).rejects.toThrow()
   })
+
+  it('should attempt to get ID token from current user when no explicit token', async () => {
+    const mockToken = 'test-auth-token';
+    const { auth } = await import('../lib/firebase');
+    (auth.currentUser as any) = { getIdToken: vi.fn().mockResolvedValue(mockToken) };
+
+    // @ts-ignore
+    global.fetch.mockResolvedValueOnce({ ok: true, json: () => Promise.resolve({ data: 'ok' }) });
+
+    await apiRequest('/test-endpoint');
+
+    expect(auth.currentUser.getIdToken).toHaveBeenCalled();
+    expect(global.fetch).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.objectContaining({
+        headers: expect.objectContaining({
+          'Authorization': `Bearer ${mockToken}`
+        })
+      })
+    );
+  })
+
 })

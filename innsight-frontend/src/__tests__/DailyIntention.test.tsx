@@ -1,5 +1,17 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+/** @vitest-environment jsdom */
+
+// Polyfill localStorage for jsdom environment
+if (typeof globalThis.localStorage === 'undefined') {
+  Object.defineProperty(globalThis, 'localStorage', {
+    value: {
+      getItem: () => null,
+      setItem: () => {},
+      removeItem: () => {},
+    },
+  });
+}
+import { describe, it, expect, beforeEach, beforeAll, afterAll, vi } from 'vitest';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import DailyIntention from '../components/DailyIntention';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../lib/i18n';
@@ -11,15 +23,15 @@ vi.mock('../lib/api', () => ({
   apiRequest: vi.fn(),
 }));
 
-// Mock the Auth context
-vi.mock('../lib/firebase', async () => {
-  const actual = await vi.importActual('../lib/firebase');
-  return {
-    ...actual,
-    useAuth: vi.fn(),
-    AuthProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
-  };
-});
+ // Mock the Auth context
+ vi.mock('../lib/firebase', () => {
+   const React = require('react');
+   return {
+     useAuth: vi.fn(),
+     AuthProvider: ({ children }: { children: React.ReactNode }) =>
+       React.createElement(React.Fragment, null, children),
+   };
+ });
 
 // Create a custom render function that includes providers
 function renderWithProviders(ui: React.ReactElement, mockUser = true) {
@@ -48,6 +60,15 @@ function renderWithProviders(ui: React.ReactElement, mockUser = true) {
     mockGetIdToken,
   };
 }
+
+ // Suppress console.error output during error tests
+ const originalConsoleError = console.error;
+ beforeAll(() => {
+   vi.spyOn(console, 'error').mockImplementation(() => {});
+ });
+ afterAll(() => {
+   console.error = originalConsoleError;
+ });
 
 describe('DailyIntention Component', () => {
   beforeEach(() => {
@@ -92,44 +113,57 @@ describe('DailyIntention Component', () => {
   it('allows editing an existing intention', async () => {
     const initialIntention = 'Initial intention';
     const updatedIntention = 'Updated intention';
-    
-    // Mock API responses
-    (api.apiRequest as any).mockResolvedValueOnce({ intention: initialIntention });
-    (api.apiRequest as any).mockResolvedValueOnce({}); // For the save operation
-    
+
+    // Mock API implementation for both fetch and save operations
+    (api.apiRequest as any).mockImplementation((path: string, method: string, data?: any) => {
+      if (path === '/intention/today' && method === 'GET') {
+        return Promise.resolve({ intention: initialIntention });
+      }
+      if (path === '/save-intention' && method === 'POST') {
+        return Promise.resolve({});
+      }
+      return Promise.reject(new Error(`Unexpected API call: ${method} ${path}`));
+    });
+
     renderWithProviders(<DailyIntention />);
-    
-    // Wait for the initial intention to be displayed
-    await screen.findByText(initialIntention);
-    
-    // Click the edit button
-    const editButton = screen.getByRole('button', { 
-      name: new RegExp(i18n.t('dashboard.edit_intention'), 'i') 
+
+    // Wait for the initial intention to render
+    await waitFor(() => expect(screen.getByText(initialIntention)).toBeInTheDocument());
+
+    const editButton = screen.getByRole('button', {
+      name: new RegExp(i18n.t('dashboard.edit_intention'), 'i'),
     });
-    fireEvent.click(editButton);
-    
-    // Find the input field and update its value
+    await act(async () => {
+      fireEvent.click(editButton);
+    });
+
     const inputField = screen.getByDisplayValue(initialIntention);
-    fireEvent.change(inputField, { target: { value: updatedIntention } });
-    
-    // Click the save button
-    const saveButton = screen.getByRole('button', { 
-      name: new RegExp(i18n.t('common.save'), 'i') 
+    await act(async () => {
+      fireEvent.change(inputField, { target: { value: updatedIntention } });
     });
-    fireEvent.click(saveButton);
-    
-    // Verryyhe APAIIswae cllld carpectly).toHaveBeenCalledWith(
-    '/save-intention', 
-    'POST', 
-    { intention: updatedIntention }, 
-    'mock-token'
-  );
-  
-    Wait for the updated intention to be displayed
-    expWaut fopathe tedText).toBeInTheto bo uisplaymdt();
-  }););
-    expect(updatedText).toBeInTheDocument();
-  }
+
+    const saveButton = screen.getByRole('button', {
+      name: new RegExp(i18n.t('common.save'), 'i'),
+    });
+    await act(async () => {
+      fireEvent.click(saveButton);
+    });
+
+    // Wait for API call to complete
+    await waitFor(() => {
+      expect(api.apiRequest).toHaveBeenCalledWith(
+        '/save-intention',
+        'POST',
+        { intention: updatedIntention },
+        'mock-token'
+      );
+    });
+
+    // Confirm updated text renders
+    await waitFor(() =>
+      expect(screen.getByText(updatedIntention)).toBeInTheDocument()
+    );
+  });
   
   it('shows an error message when fetching fails', async () => {
     // Mock API failure

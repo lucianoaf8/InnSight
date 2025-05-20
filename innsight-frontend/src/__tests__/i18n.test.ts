@@ -1,3 +1,16 @@
+/** @vitest-environment jsdom */
+// Polyfill localStorage for jsdom tests
+if (typeof globalThis.localStorage === 'undefined') {
+  Object.defineProperty(globalThis, 'localStorage', {
+    value: {
+      getItem: () => null,
+      setItem: () => {},
+      clear: () => {},
+      removeItem: () => {},
+    },
+  });
+}
+
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { changeLanguage } from '../lib/i18n'
 import i18n from 'i18next'
@@ -92,4 +105,27 @@ describe('i18n Functionality', () => {
     // localStorage should also be set
     expect(localStorage.setItem).toHaveBeenCalledWith('lang', 'en')
   })
+
+  it('should handle errors when accessing localStorage during init', () => {
+    const originalGetItem = localStorage.getItem;
+    (localStorage as any).getItem = () => { throw new Error('ls error'); };
+    expect(() => {
+      // re-require module to trigger getStoredLanguage
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const { getStoredLanguage } = require('../lib/i18n');
+      getStoredLanguage();
+    }).not.toThrow();
+    (localStorage as any).getItem = originalGetItem;
+  });
+  
+  it('should handle errors when setting language preference', async () => {
+    const consoleSpy = vi.spyOn(console, 'error');
+    // Simulate setItem throwing
+    const originalSetItem = localStorage.setItem;
+    (localStorage as any).setItem = () => { throw new Error('ls set error'); };
+    await changeLanguage('pt');
+    expect(consoleSpy).toHaveBeenCalled();
+    (localStorage as any).setItem = originalSetItem;
+    consoleSpy.mockRestore();
+  });
 })

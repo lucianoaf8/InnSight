@@ -1,73 +1,76 @@
+/** @vitest-environment jsdom */
+// Polyfill localStorage for jsdom environment
+if (typeof globalThis.localStorage === 'undefined') {
+  Object.defineProperty(globalThis, 'localStorage', {
+    value: {
+      getItem: () => null,
+      setItem: () => {},
+      removeItem: () => {},
+    },
+  });
+}
+
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import App from '../App';
 import { useAuth } from '../lib/firebase';
 
-// Mock react-router-dom with all necessary exports including Link
+// Mock react-router-dom
 vi.mock('react-router-dom', () => {
   const actual = vi.importActual('react-router-dom');
   return {
     ...actual,
-    BrowserRouter: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-    Routes: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+    BrowserRouter: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+    Routes: ({ children }: { children: React.ReactNode }) => <>{children}</>,
     Route: ({ element }: { element: React.ReactNode }) => <>{element}</>,
     Navigate: () => <div data-testid="navigate" />,
-    Link: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+    Link: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   };
 });
 
-// Mock components used inside App
-vi.mock('../components/ThemeToggle', () => ({
-  default: () => <div data-testid="theme-toggle">Theme Toggle</div>
-}));
+// Mock pages and components
+vi.mock('../components/ThemeToggle', () => ({ default: () => <div data-testid="theme-toggle" /> }));
+vi.mock('../pages/Dashboard', () => ({ default: () => <div data-testid="dashboard" /> }));
+vi.mock('../pages/LoginPage', () => ({ default: () => <div data-testid="login-page" /> }));
+vi.mock('../pages/NotFoundPage', () => ({ default: () => <div data-testid="not-found" /> }));
 
-vi.mock('../pages/Dashboard', () => ({
-  default: () => <div data-testid="dashboard">Dashboard</div>
-}));
-
-vi.mock('../pages/LoginPage', () => ({
-  default: () => <div data-testid="login-page">Login Page</div>
-}));
-
-// Mock useAuth hook
+// Mock AuthProvider and useAuth
 vi.mock('../lib/firebase', () => ({
   useAuth: vi.fn(),
-  AuthProvider: ({ children }: { children: React.ReactNode }) => <div>{children}</div>
+  AuthProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }));
 
 describe('App Component', () => {
   it('renders without crashing', () => {
-    // Mock useAuth to return a default value to avoid destructuring error
-    vi.mocked(useAuth).mockReturnValue({
-      currentUser: null,
-      loading: false,
-      logout: vi.fn()
-    });
-
+    (useAuth as any).mockReturnValue({ currentUser: null, loading: false, logout: vi.fn() });
     render(<App />);
     expect(document.body).toBeDefined();
   });
 
   it('renders dashboard when user is authenticated', () => {
-    vi.mocked(useAuth).mockReturnValue({
-      currentUser: { uid: 'test-uid', email: 'test@example.com' },
-      loading: false,
-      logout: vi.fn()
-    });
-
+    (useAuth as any).mockReturnValue({ currentUser: {} as any, loading: false, logout: vi.fn() });
     render(<App />);
     expect(screen.getByTestId('dashboard')).toBeInTheDocument();
   });
 
   it('renders login page when user is not authenticated', () => {
-    vi.mocked(useAuth).mockReturnValue({
-      currentUser: null,
-      loading: false,
-      logout: vi.fn()
-    });
-
+    (useAuth as any).mockReturnValue({ currentUser: null, loading: false, logout: vi.fn() });
     render(<App />);
     expect(screen.getByTestId('login-page')).toBeInTheDocument();
+  });
+
+  it('shows loading state when auth is loading', () => {
+    (useAuth as any).mockReturnValue({ currentUser: null, loading: true, logout: vi.fn() });
+    render(<App />);
+    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+  });
+
+  it('navigates to NotFoundPage on unknown route', () => {
+    // For simplicity, render AppContent directly 
+    (useAuth as any).mockReturnValue({ currentUser: {} as any, loading: false, logout: vi.fn() });
+    window.history.pushState({}, '', '/some/unknown/path');
+    render(<App />);
+    expect(screen.getByTestId('not-found')).toBeInTheDocument();
   });
 });
