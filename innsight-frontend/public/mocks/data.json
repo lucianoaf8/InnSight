@@ -1,0 +1,138 @@
+{
+    "en": {
+      "user": {
+        "name": "Friend",
+        "streak": 5,
+        "currentLang": "en",
+        "darkMode": false
+      },
+      "intention": "Be patient with myself and focus on one task at a time",
+      "quote": "Be kind to yourself, for you are doing the best you can with what you know right now.",
+      "entries": [
+        {
+          "id": 1,
+          "date": "2025-05-18",
+          "time": "19:30",
+          "period": "evening",
+          "emojis": "😊,😌",
+          "journal": "Had a relaxing evening, completed my tasks without rushing."
+        },
+        {
+          "id": 2,
+          "date": "2025-05-18",
+          "time": "12:15",
+          "period": "afternoon",
+          "emojis": "😐,🤔",
+          "journal": "Lunch with colleagues, feeling a bit uncertain about the project deadline."
+        },
+        {
+          "id": 3,
+          "date": "2025-05-18",
+          "time": "08:00",
+          "period": "morning",
+          "emojis": "😀,🔆",
+          "journal": "Morning exercise helped start the day with energy!"
+        },
+        {
+          "id": 4,
+          "date": "2025-05-17",
+          "time": "21:00",
+          "period": "evening",
+          "emojis": "😔,😴",
+          "journal": "Tired after a long day, but managed to get through work."
+        },
+        {
+          "id": 5,
+          "date": "2025-05-16",
+          "time": "14:30",
+          "period": "afternoon",
+          "emojis": "😀",
+          "journal": "Productive and balanced day, the team meeting went well."
+        },
+        {
+          "id": 6,
+          "date": "2025-05-15",
+          "time": "17:45",
+          "period": "evening",
+          "emojis": "😤,😰,😓",
+          "journal": "Stressful day with deadlines, need to manage time better."
+        },
+        {
+          "id": 7,
+          "date": "2025-05-14",
+          "time": "09:20",
+          "period": "morning",
+          "emojis": "🙂,😎",
+          "journal": "Early start on a challenging project, feeling confident!"
+        }
+      ]
+    },
+    "pt": {
+      "user": {
+        "name": "Amigo",
+        "streak": 5,
+        "currentLang": "pt",
+        "darkMode": false
+      },
+      "intention": "Ser paciente comigo mesmo e focar em uma tarefa de cada vez",
+      "quote": "Seja gentil consigo mesmo, pois você está fazendo o melhor que pode com o que sabe agora.",
+      "entries": [
+        {
+          "id": 1,
+          "date": "2025-05-18",
+          "time": "19:30",
+          "period": "evening",
+          "emojis": "😊,😌",
+          "journal": "Tive uma noite relaxante, completei minhas tarefas sem pressa."
+        },
+        {
+          "id": 2,
+          "date": "2025-05-18",
+          "time": "12:15",
+          "period": "afternoon",
+          "emojis": "😐,🤔",
+          "journal": "Almoço com colegas, me sentindo um pouco incerto sobre o prazo do projeto."
+        },
+        {
+          "id": 3,
+          "date": "2025-05-18",
+          "time": "08:00",
+          "period": "morning",
+          "emojis": "😀,🔆",
+          "journal": "O exercício matinal ajudou a começar o dia com energia!"
+        },
+        {
+          "id": 4,
+          "date": "2025-05-17",
+          "time": "21:00",
+          "period": "evening",
+          "emojis": "😔,😴",
+          "journal": "Cansado depois de um longo dia, mas consegui terminar o trabalho."
+        },
+        {
+          "id": 5,
+          "date": "2025-05-16",
+          "time": "14:30",
+          "period": "afternoon",
+          "emojis": "😀",
+          "journal": "Dia produtivo e equilibrado, a reunião da equipe correu bem."
+        },
+        {
+          "id": 6,
+          "date": "2025-05-15",
+          "time": "17:45",
+          "period": "evening",
+          "emojis": "😤,😰,😓",
+          "journal": "Dia estressante com prazos, preciso gerenciar melhor meu tempo."
+        },
+        {
+          "id": 7,
+          "date": "2025-05-14",
+          "time": "09:20",
+          "period": "morning",
+          "emojis": "🙂,😎",
+          "journal": "Início adiantado em um projeto desafiador, me sentindo confiante!"
+        }
+      ]
+    }
+  }

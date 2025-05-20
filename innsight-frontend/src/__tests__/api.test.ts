@@ -1,15 +1,12 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { apiRequest } from '../lib/api'
+import i18n from '../lib/i18n'
 
 describe('API Request Functions', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     // @ts-ignore
     global.fetch = vi.fn()
-  })
-
-  afterEach(() => {
-    vi.resetAllMocks()
   })
 
   it('should include authorization token in headers when token is provided', async () => {
